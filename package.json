@@ -1,5 +1,5 @@
 {
-  "name": "magic-ball",
+  "name": "node-magic-ball",
   "version": "1.0.0",
   "description": "A simple Magic Ball tool that gives random answers.",
   "main": "index.js",
