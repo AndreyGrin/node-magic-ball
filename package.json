@@ -1,6 +1,6 @@
 {
   "name": "node-magic-ball",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Magic Ball tool that gives random answers.",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["random", "magic-ball", "fun"],
+  "keywords": [
+    "random",
+    "magic-ball",
+    "fun"
+  ],
   "author": "AndreyGrin",
   "repository": {
     "type": "git",
