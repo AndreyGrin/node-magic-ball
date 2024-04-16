@@ -1,36 +1,43 @@
 #!/usr/bin/env node
 
+const _ = require('lodash');
+
+// Array of possible answers
 const answers = [
-    "It is certain.",
-    "It is decidedly so.",
-    "Without a doubt.",
-    "Yes - definitely.",
-    "You may rely on it.",
-    "As I see it, yes.",
-    "Most likely.",
-    "Outlook good.",
-    "Yes.",
-    "Signs point to yes.",
-    "Reply hazy, try again.",
-    "Ask again later.",
-    "Better not tell you now.",
-    "Cannot predict now.",
-    "Concentrate and ask again.",
-    "Don't count on it.",
-    "My reply is no.",
-    "My sources say no.",
-    "Outlook not so good.",
-    "Very doubtful."
-  ];
-  
-  function askMagicBall(question) {
-    if (!question) {
-      console.log("Please ask a yes-no question.");
-      return;
-    }
-    const answer = answers[Math.floor(Math.random() * answers.length)];
-    console.log(`Question: ${question}\nAnswer: ${answer}`);
+  'It is certain.',
+  'It is decidedly so.',
+  'Without a doubt.',
+  'Yes - definitely.',
+  'You may rely on it.',
+  'As I see it, yes.',
+  'Most likely.',
+  'Outlook good.',
+  'Yes.',
+  'Signs point to yes.',
+  'Reply hazy, try again.',
+  'Ask again later.',
+  'Better not tell you now.',
+  'Cannot predict now.',
+  'Concentrate and ask again.',
+  'Don\'t count on it.',
+  'My reply is no.',
+  'My sources say no.',
+  'Outlook not so good.',
+  'Very doubtful.'
+];
+
+// Function to get a random answer
+function askMagicBall(question) {
+  if (question) {
+    const answer = _.sample(answers); // Use lodash to get a random answer
+    console.log(answer);
+  } else {
+    console.log('Please ask a yes-or-no question.');
   }
-  
-  const question = process.argv.slice(2).join(' ');
-  askMagicBall(question);
+}
+
+// Get the question from the command line arguments
+const question = process.argv[2];
+
+// Use the magic ball function to get an answer
+askMagicBall(question);

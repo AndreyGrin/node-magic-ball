@@ -1,6 +1,6 @@
 {
   "name": "node-magic-ball",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple Magic Ball tool that gives random answers.",
   "main": "index.js",
   "bin": {
@@ -19,5 +19,8 @@
     "type": "git",
     "url": "https://github.com/AndreyGrin/node-magic-ball"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
