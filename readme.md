@@ -7,7 +7,7 @@ Magic Ball is a Node.js command-line tool inspired by the classic fortune-tellin
 To install Magic Ball globally on your system using npm, run:
 
 ```bash
-npm install -g magic-ball
+npm install -g node-magic-ball
 ```
 
 This will install the magic-ball command globally, so it can be run from anywhere in your terminal.
