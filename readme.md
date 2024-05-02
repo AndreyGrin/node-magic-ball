@@ -20,5 +20,10 @@ magic-ball "Will I become a successful programmer?"
 ```
 Remember to enclose your question in quotes.
 
+### Jokes instead of predefined answers
+Turn your experience to more joy with programmer jokes built-it!
+
+Change `REPLY_WITH_JOKE=true` in `.env` file and magic ball will tell you a joke!
+
 ### License
 Magic Ball is open-source software licensed under the MIT License.

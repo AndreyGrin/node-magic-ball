@@ -1,43 +1,39 @@
 #!/usr/bin/env node
+require('dotenv').config();
 
 const _ = require('lodash');
-
-// Array of possible answers
-const answers = [
-  'It is certain.',
-  'It is decidedly so.',
-  'Without a doubt.',
-  'Yes - definitely.',
-  'You may rely on it.',
-  'As I see it, yes.',
-  'Most likely.',
-  'Outlook good.',
-  'Yes.',
-  'Signs point to yes.',
-  'Reply hazy, try again.',
-  'Ask again later.',
-  'Better not tell you now.',
-  'Cannot predict now.',
-  'Concentrate and ask again.',
-  'Don\'t count on it.',
-  'My reply is no.',
-  'My sources say no.',
-  'Outlook not so good.',
-  'Very doubtful.'
-];
+const axios = require('axios');
+const { answers } = require('./answers'); // Assuming answers.js is in the same directory
 
 // Function to get a random answer
 function askMagicBall(question) {
+  let answer = 'Please ask a yes-or-no question';
+
   if (question) {
-    const answer = _.sample(answers); // Use lodash to get a random answer
-    console.log(answer);
-  } else {
-    console.log('Please ask a yes-or-no question.');
+    answer = process.env.REPLY_WITH_JOKE ? getJoke().toString() : _.sample(answers);
   }
+
+  return answer;
+}
+
+function getJoke() {
+  return axios.get('https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,racist,sexist,explicit&type=single')
+    .then(response => {
+      return response.data.joke;
+    })
+    .catch(error => {
+      return 'Oops, I couldn\'t get a joke for you.';
+    });
 }
 
 // Get the question from the command line arguments
 const question = process.argv[2];
 
-// Use the magic ball function to get an answer
-askMagicBall(question);
+// Use the magic ball function to get an answer (wrapped in an IIFE to use async/await)
+(async () => {
+  await askMagicBall(question);
+})();
+
+const _askMagicBall = askMagicBall;
+
+module.exports = { askMagicBall: _askMagicBall };
