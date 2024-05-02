@@ -3,7 +3,8 @@ require('dotenv').config();
 
 const _ = require('lodash');
 const axios = require('axios');
-const { answers } = require('./answers'); // Assuming answers.js is in the same directory
+const { answers } = require('./answers');
+const { logger } = require('./logger');
 
 // Function to get a random answer
 function askMagicBall(question) {
@@ -19,6 +20,7 @@ function askMagicBall(question) {
 function getJoke() {
   return axios.get('https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,racist,sexist,explicit&type=single')
     .then(response => {
+      logger.info(response.data.joke);
       return response.data.joke;
     })
     .catch(error => {
